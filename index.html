@@ -21,6 +21,7 @@
         border-bottom: solid 4px #627295;
         border-radius: 3px;
         font-size: 2em;
+        margin: 0.5em;
       }
       .btn-square:active {
         -webkit-transform: translateY(4px);
@@ -30,11 +31,12 @@
     </style>
   </head>
   <body>
-    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-    <div id="player"></div>
     <div class="outer">
       <input class="btn-square" type="button" value="SHUFFLE" onclick="onClickShuffle()" />
     </div>
+
+    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <div id="player"></div>
 
     <script>
       const PLAYLIST_SIZE = 33
