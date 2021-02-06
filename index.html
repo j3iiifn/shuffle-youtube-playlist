@@ -39,7 +39,7 @@
     <div id="player"></div>
 
     <script>
-      const PLAYLIST_SIZE = 33
+      const FIRST_VIDEO_ID = 'BCaBy9iguDs';
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
 
@@ -56,10 +56,18 @@
           width: '640',
           playerVars: {
             listType: 'playlist',
-            list: 'PLgebMpp6O2mVYgVrAVHbAsbBlvhop2UYC',
-            index: getRandomInt(PLAYLIST_SIZE)
+            list: 'PLgebMpp6O2mVYgVrAVHbAsbBlvhop2UYC'
+          },
+          events: {
+            'onReady': onPlayerReady
           }
         });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        const index = event.target.playerInfo.playlist.findIndex((element) => element == FIRST_VIDEO_ID);
+        event.target.playVideoAt(index);
       }
 
       function getRandomInt(max) {
@@ -67,7 +75,7 @@
       }
 
       function onClickShuffle() {
-        player.playVideoAt(getRandomInt(PLAYLIST_SIZE))
+        player.playVideoAt(getRandomInt(player.playerInfo.playlist.length))
       }
     </script>
   </body>
